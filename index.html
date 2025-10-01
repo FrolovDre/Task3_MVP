@@ -1,0 +1,42 @@
+<!-- index.html — minimal UI for the Event Logger (ready to deploy) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Event Logger</title>
+  <style>
+    :root { --bg:#0f1221; --card:#171a36; --ink:#e9ecff; --sub:#a7add6; --accent:#86b7ff; --ok:#4caf50; --err:#ff6b6b; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--ink); display:flex; min-height:100vh; }
+    main { margin:auto; width:min(880px, 92vw); background: var(--card); border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:16px; }
+    h1 { margin:0 0 10px; font-size:18px; }
+    .row { display:flex; gap:8px; flex-wrap:wrap; margin:10px 0; }
+    input { flex:1 1 420px; min-width:240px; padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#0f1226; color:var(--ink); }
+    button { padding:10px 14px; border:0; border-radius:10px; background:var(--accent); color:#0b132b; font-weight:700; cursor:pointer; }
+    button:disabled { opacity:.6; cursor:not-allowed; }
+    #status { min-height:1.4em; margin-top:8px; font-size:14px; color:var(--sub); }
+    #status.ok { color: var(--ok); }
+    #status.err { color: var(--err); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Event Logger</h1>
+    <div class="row">
+      <input id="gasUrl" type="url" inputmode="url" placeholder="Paste Google Apps Script Web App URL (must end with /exec)" />
+      <button id="saveUrl" title="Save URL locally">Save URL</button>
+    </div>
+
+    <div class="row">
+      <button id="ctaA">CTA A</button>
+      <button id="ctaB">CTA B</button>
+      <button id="heartbeat" title="Send heartbeat ping">Heartbeat</button>
+    </div>
+
+    <div id="status" aria-live="polite"></div>
+  </main>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
